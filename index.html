@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Ordering</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script defer type="text/javascript" src="scripts/utils.js"></script>
+    <script defer type="text/javascript" src="scripts/mock-data.js"></script>
+    <script defer type="text/javascript" src="scripts/main.js"></script>
+  </head>
+  <body>
+    <div id="content-container">
+      <h1>Food Ordering</h1>
+      <table>
+        <thead id="customers-table-head">
+          <tr>
+            <th data-key="id">#</th>
+            <th data-key="customer">Customer</th>
+            <th data-key="address">Address</th>
+            <th data-key="product">Product</th>
+            <th data-key="price">Price</th>
+            <th data-key="notes">Notes</th>
+          </tr>
+        </thead>
+        <tbody id="customers-table-body">
+          <tr>
+            <td>Loading...</td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" id="dialog-trigger">New Order</button>
+    </div>
+
+    <div id="dialog-container">
+      <div id="dialog-backdrop"></div>
+      <div id="dialog">
+        <h1 id="dialog-title">New Order</h1>
+        <form id="new-order-form" name="new-order-form">
+          <label for="customer">Choose a customer:</label>
+          <select onchange="onSelectedCustomer(event.target.value)" required name="customer" id="customer">
+            <option value="">Loading...</option>
+          </select>
+
+          <label for="address">Choose address:</label>
+          <input required name="address" id="address" />
+
+          <label for="product">Choose a product:</label>
+          <select onchange="onSelectedProduct(event.target.value)" required name="product" id="product">
+            <option value="">Loading...</option>
+          </select>
+
+          <label for="price">Price:</label>
+          <input required type="number" step=".1" name="price" id="price" />
+
+          <label for="notes">Notes</label>
+          <textarea name="notes" id="notes" placeholder="Notes..."></textarea>
+
+          <input type="hidden" id="edit-order-id" name="edit-order-id" />
+
+          <div id="dialog-actions">
+            <button id="save-order-button" type="submit">Save</button>
+            <button id="cancel-order-button" type="button">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
